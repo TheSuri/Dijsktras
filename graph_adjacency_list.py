@@ -17,7 +17,8 @@ class Graph:
 
     # TODO: YOUR CODE HERE, delete the `raise NotImplementedError`line below once you finish writing your code
     if node1 not in self.graph:
-        self.graph[node1] = (node2,weight)
+        self.graph[node1] = []
+        self.graph[node1].append((node2,weight))
     else:
         self.graph[node1].append((node2,weight))
     return
