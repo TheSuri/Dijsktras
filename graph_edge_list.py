@@ -32,4 +32,8 @@ class Graph:
     # to `x`.
 
     # TODO: YOUR CODE HERE, delete the `raise NotImplementedError`line below once you finish writing your code
-    
+    ns = []
+    for (x,y,z) in self.graph:
+        if x == node:
+            ns.append((y,z))
+    return ns
