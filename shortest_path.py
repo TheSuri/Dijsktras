@@ -3,7 +3,7 @@
 
 # Please see instructions.txt for the description of this problem.
 from exceptions import NotImplementedError
-from heapq import heappush, heappop
+import heapq
 
 def shortest_path(graph, source, target):
   # `graph` is an object that provides a get_neighbors(node) method that returns
@@ -25,10 +25,10 @@ def shortest_path(graph, source, target):
   # TODO: YOUR CODE HERE, delete the `raise NotImplementedError`line below once you finish writing your code
   
   #Priority_Q keeps track of which node to visit next
-  piority_q = [] 
+  priority_q = [] 
   heapq.heappush(priority_q, (0, source))
   #visited dict keeps track of which nodes have been visited
-  visted = set()
+  visited = set()
   #For any given node, path will store previous node we came from
   path = {source: None}
   #Remaining, for bookeeping purposes, stores Nodes and current value of path
@@ -37,11 +37,12 @@ def shortest_path(graph, source, target):
     visting_node = heapq.heappop(priority_q)
     curr_path_weight = visting_node[0]
     curr_node = visting_node[1]
-    if curr_node in visted:
+    if curr_node in visited:
       continue
     elif curr_node == target:
+      print(get_path(source, curr_node, path))
       return (get_path(source, curr_node, path), curr_path_weight)
-    for neighbor, edge_weight in graph.get_neighbors(visiting):
+    for neighbor, edge_weight in graph.get_neighbors(curr_node):
       if neighbor not in visited and (neighbor not in remaining or remaining[neighbor] > curr_path_weight+edge_weight):
         remaining[neighbor] = curr_path_weight + edge_weight
         path[neighbor] = curr_node

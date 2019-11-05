@@ -7,27 +7,42 @@
 
 from graph_adjacency_list import Graph as AdjacencyGraph
 from graph_edge_list import Graph as EdgeGraph
+from shortest_path import shortest_path
 import sys
 
-try:
-  print("Testing adjacency list graph...")
-  adjacency_graph = AdjacencyGraph()
-  adjacency_graph.add_edge('a', 'b', 1)
-  if not adjacency_graph.has_edge('a', 'b'):
-    print "Your code ran, but did NOT give True when checking whether the graph has an edge ('a', 'b') after adding edge ('a', 'b', 1)."
-  else:
-    print "Your code ran, and it correctly output True when checking whether the graph has an edge ('a', 'b') after adding edge ('a', 'b', 1)."
-except:
-  print "Your code produced this error when adding edge ('a', 'b', 1) or checking has_edge('a', 'b')."
-  print sys.exc_info()[0]
-try:
-  if adjacency_graph.get_neighbors('a') != [('b', 1)]:
-    print "Your code ran, but did NOT output the right neighbors for 'a' when adding edge ('a', 'b', 1)."
-  else:
-    print "Your code ran, and it correctly output the right neighbors for 'a' when adding edge ('a', 'b', 1)."
-except:
-  print "Your code produced this error when adding edge ('a', 'b', 1) or getting neighbors for 'a'."
-  print sys.exc_info()[0]
+print("Testing adjacency list graph...")
+adjacency_graph = AdjacencyGraph()
+adjacency_graph.add_edge('a', 'b', 5)
+adjacency_graph.add_edge('a', 'e', 1)
+adjacency_graph.add_edge('a', 'd', 1)
+adjacency_graph.add_edge('b', 'c', 1)
+adjacency_graph.add_edge('c', 'f', 2)
+adjacency_graph.add_edge('e', 'b', 2)
+shortest_path(adjacency_graph, 'a', 'f')
+
+# try:
+
+  # adjacency_graph.add_edge('a', 'b', 1)
+  # adjacency_graph.add_edge('a', 'b', 1)
+  # adjacency_graph.add_edge('a', 'b', 1)
+  # adjacency_graph.add_edge('a', 'b', 1)
+  # adjacency_graph.add_edge('a', 'b', 1)
+
+#   if not adjacency_graph.has_edge('a', 'b'):
+#     print "Your code ran, but did NOT give True when checking whether the graph has an edge ('a', 'b') after adding edge ('a', 'b', 1)."
+#   else:
+#     print "Your code ran, and it correctly output True when checking whether the graph has an edge ('a', 'b') after adding edge ('a', 'b', 1)."
+# except:
+#   print "Your code produced this error when adding edge ('a', 'b', 1) or checking has_edge('a', 'b')."
+#   print sys.exc_info()[0]
+# try:
+#   if adjacency_graph.get_neighbors('a') != [('b', 1)]:
+#     print "Your code ran, but did NOT output the right neighbors for 'a' when adding edge ('a', 'b', 1)."
+#   else:
+#     print "Your code ran, and it correctly output the right neighbors for 'a' when adding edge ('a', 'b', 1)."
+# except:
+#   print "Your code produced this error when adding edge ('a', 'b', 1) or getting neighbors for 'a'."
+#   print sys.exc_info()[0]
 
 try:
   print("Testing edge list graph...")
