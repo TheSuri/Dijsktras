@@ -21,6 +21,9 @@ class Graph:
         self.graph[node1].append((node2,weight))
     else:
         self.graph[node1].append((node2,weight))
+    if node2 not in self.graph:
+        self.graph[node2] = []
+    
     return
 
   def has_edge(self, node1, node2):
